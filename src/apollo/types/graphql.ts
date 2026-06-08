@@ -1340,4 +1340,11 @@ export type GetLaunchesQueryVariables = Exact<{
 }>;
 
 
-export type GetLaunchesQuery = { launches: Array<{ id: string | null, mission_name: string | null, launch_date_utc: unknown, launch_success: boolean | null, rocket: { rocket_name: string | null, rocket_type: string | null } | null } | null> | null };
+export type GetLaunchesQuery = { launches: Array<{ id: string | null, mission_name: string | null, launch_year: string | null, launch_success: boolean | null, rocket: { rocket_name: string | null } | null, links: { mission_patch_small: string | null } | null } | null> | null };
+
+export type GetLaunchDetailsQueryVariables = Exact<{
+  id: string | number;
+}>;
+
+
+export type GetLaunchDetailsQuery = { launch: { id: string | null, mission_name: string | null, details: string | null, launch_date_utc: unknown, launch_success: boolean | null, rocket: { rocket_name: string | null, rocket_type: string | null } | null, links: { mission_patch_small: string | null, video_link: string | null, article_link: string | null, wikipedia: string | null } | null } | null };
