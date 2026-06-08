@@ -2,6 +2,7 @@ import { createApp, provide, h } from 'vue';
 import { DefaultApolloClient } from '@vue/apollo-composable';
 import App from './App.vue';
 import { apolloClient } from "@/apollo/client.ts";
+import vuetify from './plugins/vuetify'
 
 const app = createApp({
     setup() {
@@ -10,4 +11,4 @@ const app = createApp({
     render: () => h(App),
 });
 
-app.mount('#app');
+app.use(vuetify).mount('#app');
