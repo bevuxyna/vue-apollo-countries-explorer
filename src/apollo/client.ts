@@ -1,7 +1,7 @@
 import { ApolloClient, createHttpLink, InMemoryCache } from "@apollo/client";
 
 const httpLink = createHttpLink({
-    uri: 'https://spacex-production.up.railway.app/',
+    uri: 'https://countries.trevorblades.com/',
 });
 
 const cache = new InMemoryCache()

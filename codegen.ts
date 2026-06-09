@@ -1,7 +1,7 @@
 import type { CodegenConfig } from '@graphql-codegen/cli';
 
 const config: CodegenConfig = {
-    schema: 'https://spacex-production.up.railway.app/',
+    schema: 'https://countries.trevorblades.com/',
     documents: ['src/**/*.{ts,vue}'],
     generates: {
         './src/apollo/types/graphql.ts': {

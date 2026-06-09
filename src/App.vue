@@ -1,9 +1,10 @@
 <script setup lang="ts">
+import MainView from "@/views/MainView.vue";
 </script>
 
 <template>
   <v-app>
-    Hello
+    <MainView />
   </v-app>
 </template>
 
