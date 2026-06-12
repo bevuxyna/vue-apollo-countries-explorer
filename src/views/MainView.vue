@@ -1,5 +1,19 @@
 <template>
   <div class="page">
+    <h1> Countries of the World </h1>
+    <span>250 countries — explore capitals, currencies, languages and more</span>
+
+    <v-text-field
+        prepend-inner-icon="mdi mdi-magnify"
+        variant="outlined"
+        placeholder="Search by name, code or capital…"
+        rounded
+    />
+
+    <div class="d-flex ga-2">
+      <v-chip v-for="continent of Continents" variant="outlined" class="chip">{{ continent }}</v-chip>
+    </div>
+
     <v-container>
       <v-row>
         <v-col
@@ -10,27 +24,9 @@
             md="4"
             lg="3"
         >
-          <v-card class="card">
-            <v-card-item>
-              <v-card-title>{{ country.name }}</v-card-title>
-
-              <v-card-text>
-                <div class="d-flex flex-column">
-                  <span>Capital: {{ country?.capital || '—' }}</span>
-                  <span>Continent: {{ country?.continent.name }}</span>
-                  <span>
-                    Languages: {{ country.languages.map(l => l.name).join(', ') }}
-                  </span>
-                  <span>Currency: {{ country?.currency }}</span>
-                </div>
-              </v-card-text>
-            </v-card-item>
-
-
-          </v-card>
+          <CountryCard :country="country" />
         </v-col>
       </v-row>
-
     </v-container>
   </div>
 </template>
@@ -42,13 +38,15 @@ import type {
   GetCountriesQuery,
   GetCountriesQueryVariables,
 } from '@/apollo/types/graphql';
+import CountryCard from "@/components/CountryCard.vue";
+import {Continents} from "@/constants";
 
 const { result, loading, error, refetch } = useQuery<GetCountriesQuery, GetCountriesQueryVariables>(
     GET_COUNTRIES
 );
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .page {
   background: #18181B;
   color: #F1F5F9;
@@ -61,5 +59,11 @@ const { result, loading, error, refetch } = useQuery<GetCountriesQuery, GetCount
   border: 1px solid #2e2e32;
   color: #F1F5F9;
   padding: 16px;
+}
+
+.chip {
+  background-color: #1F1F23;
+  color: #A1A1AA;
+  border-color: #A1A1AA;
 }
 </style>
