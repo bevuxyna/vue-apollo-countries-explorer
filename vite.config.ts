@@ -11,6 +11,11 @@ export default defineConfig({
     vue(),
     vueDevTools(),
     vuetify({ autoImport: true }),
+    eslint({
+      include: ['src/**/*.vue', 'src/**/*.ts', 'src/**/*.js'],
+      exclude: ['node_modules', 'dist'],
+      fix: true,
+    }),
   ],
   resolve: {
     alias: {
