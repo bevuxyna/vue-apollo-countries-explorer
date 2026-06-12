@@ -3,6 +3,7 @@ import { DefaultApolloClient } from '@vue/apollo-composable';
 import App from './App.vue';
 import { apolloClient } from "@/apollo/client.ts";
 import vuetify from './plugins/vuetify'
+import './assets/index.scss';
 
 const app = createApp({
     setup() {

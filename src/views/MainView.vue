@@ -1,13 +1,13 @@
 <template>
   <div class="page">
-    <h1>Countries of the World</h1>
+    <h1 class="mb-1">Countries of the World</h1>
     <span>250 countries — explore capitals, currencies, languages and more</span>
 
     <v-text-field
       prepend-inner-icon="mdi mdi-magnify"
-      variant="outlined"
       placeholder="Search by name, code or capital…"
       rounded
+      class="search-field"
     />
 
     <div class="d-flex ga-2">
@@ -16,12 +16,12 @@
       </v-chip>
     </div>
 
-    <v-container>
+    <v-container class="mt-3">
       <v-row>
         <v-col
           v-for="country of result?.countries"
           :key="country?.code"
-          cols="12"
+          cols="4"
           sm="6"
           md="4"
           lg="3"
@@ -47,22 +47,28 @@ const { result, loading, error, refetch } = useQuery<GetCountriesQuery, GetCount
 
 <style scoped lang="scss">
 .page {
-  background: #18181b;
-  color: #f1f5f9;
   flex: 1;
 }
 
 .card {
-  background: #1f1f23;
+  background: var(--background);
   border-radius: 15px;
-  border: 1px solid #2e2e32;
+  border: 1px solid var(--border);
   color: #f1f5f9;
   padding: 16px;
 }
 
 .chip {
-  background-color: #1f1f23;
-  color: #a1a1aa;
-  border-color: #a1a1aa;
+  background-color: var(--background-secondary);
+  color: var(--text);
+  border-color: var(--border);
+}
+
+.search-field {
+  margin-top: 30px;
+
+  .v-input__control {
+    background-color: var(--background-secondary) !important;
+  }
 }
 </style>
