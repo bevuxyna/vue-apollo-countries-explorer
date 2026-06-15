@@ -1,5 +1,10 @@
 @import './colors.scss';
 
+.title {
+  font-weight: 700;
+}
+
 .caption {
   color: var(--text-secondary);
+  font-size: 12px;
 }
