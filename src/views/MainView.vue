@@ -50,14 +50,6 @@ const { result, loading, error, refetch } = useQuery<GetCountriesQuery, GetCount
   flex: 1;
 }
 
-.card {
-  background: var(--background);
-  border-radius: 15px;
-  border: 1px solid var(--border);
-  color: #f1f5f9;
-  padding: 16px;
-}
-
 .chip {
   background-color: var(--background-secondary);
   color: var(--text);

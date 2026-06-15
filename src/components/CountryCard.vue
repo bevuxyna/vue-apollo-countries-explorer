@@ -1,27 +1,22 @@
 <template>
-  <v-card class="card">
-    <v-card-item>
-      <template #prepend>
-        <country-flag :iso="country.code" mode="squared" />
-      </template>
+  <div class="card">
+      <span>{{ country?.continent.code }}</span>
 
-      <v-card-title>{{ country?.continent.code }}</v-card-title>
-
-      <v-card-text>
+      <div>
         <div class="d-flex flex-column">
           <span>{{ country?.name }}</span>
-          <span>{{ country?.capital || '—' }}</span>
+          <span class="caption">{{ country?.capital || '—' }}</span>
         </div>
         <v-chip
           size="x-small"
           :color="CONTINENT_COLORS[country?.continent.name].bg"
+          :style="{ color: CONTINENT_COLORS[country?.continent.name].text }"
           variant="flat"
-          >
+        >
           {{ country?.continent.code }}
         </v-chip>
-      </v-card-text>
-    </v-card-item>
-  </v-card>
+      </div>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -31,4 +26,12 @@ import { CONTINENT_COLORS } from '@/constants';
 defineProps<{ country: Country }>();
 </script>
 
-<style scoped></style>
+<style scoped>
+.card {
+  background: var(--background);
+  border-radius: 15px;
+  border: 1px solid var(--border);
+  color: #f1f5f9;
+  padding: 16px;
+}
+</style>
