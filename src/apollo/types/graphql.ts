@@ -130,7 +130,9 @@ export type Subdivision = {
   name: Scalars['String']['output'];
 };
 
-export type GetCountriesQueryVariables = Exact<{ [key: string]: never; }>;
+export type GetCountriesQueryVariables = Exact<{
+  filter?: CountryFilterInput | null | undefined;
+}>;
 
 
 export type GetCountriesQuery = { countries: Array<{ code: string, name: string, emoji: string, currency: string | null, capital: string | null, continent: { code: string, name: string }, languages: Array<{ code: string, name: string }> }> };

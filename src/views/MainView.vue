@@ -48,14 +48,33 @@ import { useQuery } from '@vue/apollo-composable';
 import { GET_COUNTRIES } from '@/apollo/queries';
 import type { GetCountriesQuery, GetCountriesQueryVariables } from '@/apollo/types/graphql';
 import CountryCard from '@/components/CountryCard.vue';
-import { Continents } from '@/constants';
-import { ref } from 'vue';
-
-const { result, loading, error, refetch } = useQuery<GetCountriesQuery, GetCountriesQueryVariables>(
-  GET_COUNTRIES
-);
+import { CONTINENT_CODES, Continents } from '@/constants';
+import { computed, ref, watch } from 'vue';
 
 const continentFilter = ref(Continents.All);
+
+const filterVariables = computed(() => {
+  if (continentFilter.value === Continents.All) {
+    return {};
+  }
+
+  return {
+    filter: {
+      continent: {
+        eq: CONTINENT_CODES[continentFilter.value],
+      },
+    },
+  };
+});
+
+const { result, loading, error, refetch } = useQuery<GetCountriesQuery, GetCountriesQueryVariables>(
+  GET_COUNTRIES,
+  () => filterVariables.value
+);
+
+watch(continentFilter, () => {
+  refetch(filterVariables.value);
+});
 </script>
 
 <style scoped lang="scss">
