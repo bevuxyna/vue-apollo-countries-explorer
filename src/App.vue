@@ -14,6 +14,7 @@ import MainView from '@/views/MainView.vue';
 .app {
   background: var(--background);
   color: var(--text);
+  min-height: 100vh;
 }
 
 .container {

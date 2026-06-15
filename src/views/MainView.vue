@@ -27,7 +27,12 @@
     </div>
 
     <v-container class="mt-3">
-      <v-row>
+      <div v-if="loading" class="d-flex flex-column ga-2 align-center">
+        <v-progress-circular indeterminate :style="{ color: 'var(--text-primary)' }" />
+        <span>Loading...</span>
+      </div>
+
+      <v-row v-else>
         <v-col
           v-for="country of result?.countries"
           :key="country?.code"
@@ -100,6 +105,7 @@ watch(continentFilter, () => {
 
 .search-field {
   margin-top: 20px;
+  max-width: 550px;
 
   :deep(.v-input__control) {
     .v-field__outline {
